@@ -1,6 +1,6 @@
 <?php
     function GetLists() {
-      $connection = connect();
+      $connection = DbConnect();
       $stmt = $connection->prepare("SELECT id, name FROM lists");
       $stmt->execute();
     

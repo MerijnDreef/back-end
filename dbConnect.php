@@ -1,5 +1,5 @@
 <?php
-function connect() {
+function DbConnect() {
   $servername = "localhost";
   $username = "root";
   $databasename = "back-end";
