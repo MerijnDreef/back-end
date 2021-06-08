@@ -1,7 +1,9 @@
 <?php
-    function GetLists() {
+require "dbConnect.php";
+
+    function getLists() {
       $connection = DbConnect();
-      $stmt = $connection->prepare("SELECT id, name FROM lists");
+      $stmt = $connection->prepare("SELECT list_id, name FROM lists");
       $stmt->execute();
     
       // set the resulting array to associative

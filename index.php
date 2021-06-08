@@ -1,5 +1,6 @@
 <?php
-require "dbConnect.php";
+include "function.php";
+$lists = getLists();
 
 ?>
 <!DOCTYPE html>
@@ -13,6 +14,12 @@ require "dbConnect.php";
 <body>
    <p>Hey hey</p> 
    <p>doe het zo, Te doen, bezig, klaar</p>
+   <?php 
+   foreach($lists as $list) {
+    echo "<h1>" . $list['name'] . "</h1>";
+
+   }
+   ?>
 </body>
 </html>
 <!-- <span></span> bindparam();-->
