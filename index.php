@@ -1,9 +1,8 @@
 <?php
 include "function.php";
 $lists = getLists();
-$todo = getToDo();
-$busy = getBusy();
-$done = getDone();
+$tasks = getTasks();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +10,7 @@ $done = getDone();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css.css">
     <title>To-do list</title>
 </head>
 <body>
@@ -19,10 +19,12 @@ $done = getDone();
    <?php 
    foreach($lists as $list) {
     echo "<h1>" . $list['name'] . "</h1>";
-        foreach($todo as $todo) {
-            echo "<p>" . $todo['name'] . "</p>";
-            echo "<p>" . $todo['description'] . "</p>";
+
+    foreach($tasks as $task) {
+        if($task['list_id'] == $list['list_id']) {
+        echo "<p>" . $task['task_id'] . " " . $task['name'] . " " . $task['list_id'] . "</p>";
         }
+    }
    }
    ?>
 </body>
