@@ -16,6 +16,7 @@ $tasks = getTasks();
 <body>
    <p>Hey hey</p> 
    <p>doe het zo, Te doen, bezig, klaar</p>
+   <a id="headerCreate" href="createList.php">Create a List</a>
    <?php 
    foreach($lists as $list) {
     echo "<h1>" . $list['name'] . "</h1>";

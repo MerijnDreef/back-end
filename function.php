@@ -20,4 +20,11 @@ require "dbConnect.php";
       $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     return $stmt->fetchAll();
     }
+
+    function listController($name){
+      $conn = DbConnect();
+      $stnt = $conn->prepare("INSERT INTO Lists (name) VALUES (:name)");
+      $stnt->execute([':name' => $name]);
+      return $stnt->errorCode();
+  }
 ?>

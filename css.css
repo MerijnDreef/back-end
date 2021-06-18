@@ -3,3 +3,30 @@ body {
     color: rgb(230, 230, 230);
     background-color: black;
 }
+
+a{
+    text-decoration:none;
+}
+
+h1{
+    margin-top: 10px;
+    width: 30%;
+    background-color: #474747;
+    color: #f8f8f8;
+    text-align: center;
+    /* display: inline-block; */
+}
+
+#headerCreate{
+    margin-top: 0;
+    color: rgb(230, 230, 230);
+    background-color: #645c5c;
+    border: 2px solid black;
+    margin-bottom: 40px;
+    padding: 3px;
+}
+
+p{
+    width: 30%;
+    display: inline-block;
+}

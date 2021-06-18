@@ -1,6 +1,20 @@
 <?php
 include "function.php";
 
+function createList($name) {
+    if($name != null) {
+    $name = $_POST['name'];
+    $result = listController($name);
+    header('Location: index.php');
+    } else {
+        echo "Now hold up there buckaroo";
+    }
+}
+
+if(array_key_exists('submit', $_POST)) {
+    createList($_POST['name']);
+ }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,10 +26,10 @@ include "function.php";
     <title>Create a list</title>
 </head>
 <body>
-<h1><a href='index.php'>Terug naar lists?</a></h1>
-    <form action='createconfirmed.php' method='POST'>    <!-- vergeet niet de goede locaties te doen -->
-        <label for='hostName'>Host name</label><input type='text' name='hostName' id='hostName'> 
-        <input type="submit" value="Create">
+<a id="headerCreate" href='index.php'>Terug naar lists?</a>
+    <form method='POST'> 
+        <label for='name'>name </label><input type='text' name='name' id='name'> 
+        <input type="submit" name="submit" value="Create">
     </form>
 </body>
 </html>
