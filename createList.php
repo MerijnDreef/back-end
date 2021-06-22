@@ -7,7 +7,7 @@ function createList($name) {
     $result = listController($name);
     header('Location: index.php');
     } else {
-        echo "Now hold up there buckaroo";
+        echo "<p> Now hold up there buckaroo, looks like you are missing something </p> <br>";
     }
 }
 

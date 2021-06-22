@@ -26,5 +26,12 @@ require "dbConnect.php";
       $stnt = $conn->prepare("INSERT INTO Lists (name) VALUES (:name)");
       $stnt->execute([':name' => $name]);
       return $stnt->errorCode();
+    }
+
+    function TaskController($name, $description, $list_id){
+      $conn = DbConnect();
+      $stnt = $conn->prepare("INSERT INTO Tasks (name, description, list_id) VALUES (:name, :description, :list_id)");
+      $stnt->execute([':name' => $name, 'description' => $description, 'list_id' => $list_id]);
+      return $stnt->errorCode();
   }
 ?>

@@ -17,13 +17,14 @@ $tasks = getTasks();
    <p>Hey hey</p> 
    <p>doe het zo, Te doen, bezig, klaar</p>
    <a id="headerCreate" href="createList.php">Create a List</a>
+   <a id="headerCreate" href="createTask.php">Create a Task</a>
    <?php 
    foreach($lists as $list) {
-    echo "<h1>" . $list['name'] . "</h1>";
+    echo "<h1>" . htmlspecialchars($list['name']) . "</h1>";
 
     foreach($tasks as $task) {
         if($task['list_id'] == $list['list_id']) {
-        echo "<p>" . $task['task_id'] . " " . $task['name'] . " " . $task['list_id'] . "</p>";
+        echo "<p>" . htmlspecialchars($task['task_id']) . " " . htmlspecialchars($task['name']) . " " . htmlspecialchars($task['list_id']) . "</p>";
         }
     }
    }
