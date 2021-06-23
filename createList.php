@@ -4,7 +4,7 @@ include "function.php";
 function createList($name) {
     if($name != null) {
     $name = $_POST['name'];
-    $result = listController($name);
+    $result = listInserter($name);
     header('Location: index.php');
     } else {
         echo "<p> Now hold up there buckaroo, looks like you are missing something </p> <br>";

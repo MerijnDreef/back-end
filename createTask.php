@@ -4,7 +4,7 @@ $result = getLists();
 
 function createTask($name, $description, $list_id) {
     if($name != null && $list_id != null) {
-        $result = taskController($name, $description, $list_id);
+        $result = taskInserter($name, $description, $list_id);
         header('Location: index.php');
     } else {
         echo "Now hold up there buckaroo";

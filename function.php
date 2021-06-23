@@ -21,17 +21,17 @@ require "dbConnect.php";
     return $stmt->fetchAll();
     }
 
-    function listController($name){
+    function listInserter($name){
       $conn = DbConnect();
-      $stnt = $conn->prepare("INSERT INTO Lists (name) VALUES (:name)");
-      $stnt->execute([':name' => $name]);
-      return $stnt->errorCode();
+      $stmt = $conn->prepare("INSERT INTO Lists (name) VALUES (:name)");
+      $stmt->execute([':name' => $name]);
+      return $stmt->errorCode();
     }
 
-    function TaskController($name, $description, $list_id){
+    function TaskInserter($name, $description, $list_id){
       $conn = DbConnect();
-      $stnt = $conn->prepare("INSERT INTO Tasks (name, description, list_id) VALUES (:name, :description, :list_id)");
-      $stnt->execute([':name' => $name, 'description' => $description, 'list_id' => $list_id]);
-      return $stnt->errorCode();
+      $stmt = $conn->prepare("INSERT INTO Tasks (name, description, list_id) VALUES (:name, :description, :list_id)");
+      $stmt->execute([':name' => $name, 'description' => $description, 'list_id' => $list_id]);
+      return $stmt->errorCode();
   }
 ?>
