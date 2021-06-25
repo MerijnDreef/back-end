@@ -19,15 +19,23 @@ $tasks = getTasks();
    <a id="headerCreate" href="createList.php">Create a List</a>
    <a id="headerCreate" href="createTask.php">Create a Task</a>
    <?php 
-   foreach($lists as $list) {
-    echo "<h1>" . htmlspecialchars($list['name']) . "</h1>";
+    foreach($lists as $list) {
+        echo "<h1>" . htmlspecialchars($list['name']) . "</h1>";
+        echo "<br>";
+        echo "<a id='headerUpdate' href='updateList.php?list_id=" . htmlspecialchars(urlencode($list['list_id'])) . "'>Update your list</a>";
+        echo "<a id='headerDelete' href='deleteList.php?task_id=" . htmlspecialchars(urlencode($list['list_id'])) . "'>Delete your list</a>";
+        echo "<br>";
 
-    foreach($tasks as $task) {
-        if($task['list_id'] == $list['list_id']) {
-        echo "<p>" . htmlspecialchars($task['task_id']) . " " . htmlspecialchars($task['name']) . " " . htmlspecialchars($task['list_id']) . "</p>";
+        foreach($tasks as $task) {
+            if($task['list_id'] == $list['list_id']) {
+                echo "<p>" . htmlspecialchars($task['task_id']) . " " . htmlspecialchars($task['name']) . ", " . htmlspecialchars($task['description']) . " " . htmlspecialchars($task['list_id']) . "</p>";
+                echo "<br>";
+                echo "<a id='headerUpdate' href='updateTask.php?task_id=" . htmlspecialchars(urlencode($task['task_id'])) . "'>Update your task</a>";
+                echo "<a id='headerDelete' href='deleteTask.php?task_id=" . htmlspecialchars(urlencode($task['task_id'])) . "'>Delete your task</a>";
+                echo "<br>";
+            }
         }
     }
-   }
    ?>
 </body>
 </html>

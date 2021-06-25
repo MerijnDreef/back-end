@@ -1,10 +1,11 @@
 <?php
 include "function.php";
 $result = getLists();
+$show = getTaskId($_GET['task_id']);
 
-function createTask($name, $description, $list_id) {
-    if($name != null && $list_id != null) {
-        $result = taskCreater($name, $description, $list_id);
+function createTask($task_id, $name, $description, $list_id) {
+    if($task_id != null && $name != null && $list_id != null) {
+        $result = taskUpdater($task_id, $name, $description, $list_id);
         header('Location: index.php');
     } else {
         echo "Now hold up there buckaroo";
@@ -12,7 +13,7 @@ function createTask($name, $description, $list_id) {
 }
 
 if(array_key_exists('submit', $_POST)) {
-    createTask($_POST['name'], $_POST['description'], $_POST['list_id']);
+    createTask($_POST['task_id'], $_POST['name'], $_POST['description'], $_POST['list_id']);
  }
 
 ?>
@@ -41,6 +42,7 @@ if(array_key_exists('submit', $_POST)) {
         <br>
         <br>
         <label for='description'>description </label><input type='text' name='description' id='description'>
+        <input type='hidden' name='task_id' value='<?php echo $show[0]['task_id'];?>'>
         <input type="submit" name="submit" value="Create">
     </form>
 </body>
