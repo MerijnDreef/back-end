@@ -1,27 +1,27 @@
 body {
     height: 100%;
-    color: rgb(230, 230, 230);
-    background-color: black;
+    color: rgb(230, 230, 230)       !important;
+    background-color: black         !important;
 }
 
 a{
-    text-decoration:none;
+    text-decoration: none             !important;
 }
 
-h1{
+h2{
     margin-top: 10px;
     width: 30%;
-    background-color: #474747;
-    color: #f8f8f8;
+    background-color: #474747       !important;
+    color: #f8f8f8                  !important;
     text-align: center;
     display: inline-block;
 }
 
 #headerCreate{
     margin-top: 0;
-    color: rgb(230, 230, 230);
-    background-color: #645c5c;
-    border: 2px solid black;
+    color: rgb(230, 230, 230)       !important;
+    background-color: #645c5c       !important;
+    border: 2px solid black         !important;
     margin-bottom: 40px;
     padding: 3px;
 }
@@ -32,18 +32,18 @@ p{
 }
 
 #headerUpdate{
-    background-color:rgb(29, 175, 24);
-    color:#f8f8f8;
-    text-decoration:none;
-    border:1px solid grey;
-    padding:3px;
-    margin-right:3px;
+    /* background-color:rgb(39, 131, 184); */
+    color:rgb(39, 131, 184)         !important;
+    text-decoration: none             !important;
+    /* border:1px solid grey; */
+    /* padding:3px; */
+    /* margin-right:3px; */
 }
 
 #headerDelete{
-    background-color:rgb(199, 4, 4);
-    color:#f8f8f8;
-    text-decoration:none;
-    border:1px solid grey;
+    /* background-color:rgb(199, 4, 4); */
+    color:rgb(199, 4, 4)            !important;
+    text-decoration:none              !important;
+    /* border:1px solid grey; */
     padding:3px;
 }

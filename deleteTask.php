@@ -2,9 +2,9 @@
 include "function.php";
 $show = getTaskId($_GET['task_id']);
 
-function createTask($task_id, $name) {
-    if($task_id != null && $name != "DELETE") {
-        $result = taskInserter($task_id);
+function deleteTask($task_id, $name) {
+    if($task_id != null && $name == "DELETE") {
+        $result = taskRemover($task_id);
         header('Location: index.php');
     } else {
         echo "Now hold up there buckaroo";
@@ -12,7 +12,7 @@ function createTask($task_id, $name) {
 }
 
 if(array_key_exists('submit', $_POST)) {
-    createTask($_POST['task_id'], $_POST['name']);
+    deleteTask($_POST['task_id'], $_POST['name']);
  }
 
 ?>
@@ -30,7 +30,7 @@ if(array_key_exists('submit', $_POST)) {
     <form method='POST'> 
         <label for='name'>Type in DELETE to confirm you want to delete it </label><input type='text' name='name' id='name'>
         <input type='hidden' name='task_id' value='<?php echo $show[0]['task_id'];?>'>
-        <input type="submit" name="submit" value="Create">
+        <input type="submit" name="submit" value="Delete">
     </form>
 </body>
 </html>

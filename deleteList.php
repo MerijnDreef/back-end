@@ -3,9 +3,9 @@ include "function.php";
 $show = getListId($_GET['list_id']);
 
 function createList($list_id, $name) {
-    if($list_id != null && $name != "DELETE") {
-    $result = listInserter($list_id);
-    header('Location: index.php');
+    if($list_id != null && $name == "DELETE") {
+        $result = listRemover($list_id);
+        header('Location: index.php');
     } else {
         echo "<p> Now hold up there buckaroo, looks like you are missing something </p> <br>";
     }
@@ -30,7 +30,7 @@ if(array_key_exists('submit', $_POST)) {
     <form method='POST'> 
         <label for='name'>Type in DELETE to confirm you want to delete it </label><input type='text' name='name' id='name'> 
         <input type='hidden' name='list_id' value='<?php echo $show[0]['list_id'];?>'>
-        <input type="submit" name="submit" value="Create">
+        <input type="submit" name="submit" value="Delete">
     </form>
 </body>
 </html>

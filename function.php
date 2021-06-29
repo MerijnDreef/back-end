@@ -28,10 +28,10 @@ require "dbConnect.php";
     return $stmt->errorCode();
   }
 
-  function TaskCreater($name, $description, $list_id){
+  function TaskCreater($name, $description, $status, $time_needed, $list_id){
     $conn = DbConnect();
-    $stmt = $conn->prepare("INSERT INTO Tasks (name, description, list_id) VALUES (:name, :description, :list_id)");
-    $stmt->execute([':name' => $name, 'description' => $description, 'list_id' => $list_id]);
+    $stmt = $conn->prepare("INSERT INTO Tasks (name, description, status, time_needed, list_id) VALUES (:name, :description, :status, :time_needed, :list_id)");
+    $stmt->execute([':name' => $name, 'description' => $description, ':status' => $status, ':time_needed' => $time_needed, 'list_id' => $list_id]);
     return $stmt->errorCode();
   }
 
@@ -44,8 +44,8 @@ require "dbConnect.php";
 
   function taskUpdater($task_id, $name, $description, $list_id){
     $conn = DbConnect();
-    $stnt = $conn->prepare("UPDATE tasks set task_id = :task_id, name = :name, description = :description , list_id = :list_id WHERE task_id = :task_id");
-    $stnt->execute([':task_id' => $task_id, ':name' => $name, 'description' => $description, 'list_id' => $list_id]);
+    $stnt = $conn->prepare("UPDATE tasks set task_id = :task_id, name = :name, description = :description, status = :status, time_needed = :time_needed, list_id = :list_id WHERE task_id = :task_id");
+    $stnt->execute([':task_id' => $task_id, ':name' => $name, 'description' => $description, ':status' => $status, ':time_needed' => $time_needed, 'list_id' => $list_id]);
     return $stnt->errorCode();  
   }  
 
