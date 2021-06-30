@@ -19,10 +19,11 @@ $tasks = getTasks();
    <a id="headerCreate" href="createList.php">Create a List</a>
    <a id="headerCreate" href="createTask.php">Create a Task</a>
    <br>
-   <div class='container flex-grow-0'>
+   <div class='container-fluid'>
+    <div class='row-3'>
     <?php 
         foreach($lists as $list) {
-            echo "<div class='flex-column'>";
+            echo "<div class='col'>";
             echo "<h2>" . htmlspecialchars($list['name']) . "</h2>";
             echo "<a id='headerUpdate' href='updateList.php?list_id=" . htmlspecialchars(urlencode($list['list_id'])) . "'><i class='fas fa-edit'></i></a>";
             echo "<a id='headerDelete' href='deleteList.php?list_id=" . htmlspecialchars(urlencode($list['list_id'])) . "'><i class='fas fa-trash'></i></a>";
@@ -37,6 +38,7 @@ $tasks = getTasks();
             echo "</div>";
         }
     ?>
+    </div>
    </div>
 </body>
 </html>
