@@ -25,14 +25,14 @@ $tasks = getTasks();
         foreach($lists as $list) {
             echo "<div class='col'>";
             echo "<h2>" . htmlspecialchars($list['name']) . "</h2>";
-            echo "<a id='headerUpdate' href='updateList.php?list_id=" . htmlspecialchars(urlencode($list['list_id'])) . "'><i class='fas fa-edit'></i></a>";
+            echo "<a id='headerUpdate' href='updateList.php?list_id=" . htmlspecialchars(urlencode($list['list_id'])) . "'> <i class='fas fa-edit'></i></a>";
             echo "<a id='headerDelete' href='deleteList.php?list_id=" . htmlspecialchars(urlencode($list['list_id'])) . "'><i class='fas fa-trash'></i></a>";
 
             foreach($tasks as $task) {
                 if($task['list_id'] == $list['list_id']) {
-                    echo "<p>" . htmlspecialchars($task['task_id']) . " " . htmlspecialchars($task['name']) . ", " . htmlspecialchars($task['description']) . " " . htmlspecialchars($task['list_id']) . " " . htmlspecialchars($task['status']) . " " . htmlspecialchars($task['time_needed']) . "</p>";
-                    echo "<a id='headerUpdate' href='updateTask.php?task_id=" . htmlspecialchars(urlencode($task['task_id'])) . "'><i class='fas fa-edit'></i></a>";
-                    echo "<a id='headerDelete' href='deleteTask.php?task_id=" . htmlspecialchars(urlencode($task['task_id'])) . "'><i class='fas fa-trash'></i></a>";
+                    echo "<div>";
+                    echo "<p>" . htmlspecialchars($task['task_id']) . " " . htmlspecialchars($task['name']) . ", " . htmlspecialchars($task['description']) . " " . htmlspecialchars($task['list_id']) . " " . htmlspecialchars($task['status']) . " " . htmlspecialchars($task['time_needed']) . "<a id='headerUpdate' href='updateTask.php?task_id=" . htmlspecialchars(urlencode($task['task_id'])) . "'> <i class='fas fa-edit'></i></a><a id='headerDelete' href='deleteTask.php?task_id=" . htmlspecialchars(urlencode($task['task_id'])) . "'><i class='fas fa-trash'></i></a></p>";
+                    echo "</div>";
                 }
             }
             echo "</div>";
