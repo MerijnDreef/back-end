@@ -18,23 +18,37 @@ $tasks = getTasks();
 <body>
    <a id="headerCreate" href="createList.php">Create a List</a>
    <a id="headerCreate" href="createTask.php">Create a Task</a>
+   <form name="status_form" method="POST" action="index.php">
+   <label for='status'>status of task </label><select name="status" id="status-select">
+            <option value=''>Nothing</option>
+            <option value='to do'>To do</option>
+            <option value='busy'>Busy</option>
+            <option value='done'>Done</option>
+        </select>
+        <input type="submit" name="status_shown">
+    </form>
    <br>
-   <div class='container-fluid'>
-    <div class='row-3'>
     <?php 
         foreach($lists as $list) {
-            echo "<div class='col'>";
-            echo "<h2>" . htmlspecialchars($list['name']) . "</h2>";
+            echo "<div class='card bg-dark mb-3 d-inline-block' style='max-width: 20rem; margin-right: 1rem;'>";
+           
+            echo "<div class='card-header'><h2>" . htmlspecialchars($list['name']) . "</h2></div>";
             echo "<a id='headerUpdate' href='updateList.php?list_id=" . htmlspecialchars(urlencode($list['list_id'])) . "'> <i class='fas fa-edit'></i></a>";
             echo "<a id='headerDelete' href='deleteList.php?list_id=" . htmlspecialchars(urlencode($list['list_id'])) . "'><i class='fas fa-trash'></i></a>";
+            echo "<div class='card-body'>";
 
             foreach($tasks as $task) {
                 if($task['list_id'] == $list['list_id']) {
-                    echo "<div>";
-                    echo "<p>" . htmlspecialchars($task['task_id']) . " " . htmlspecialchars($task['name']) . ", " . htmlspecialchars($task['description']) . " " . htmlspecialchars($task['list_id']) . " " . htmlspecialchars($task['status']) . " " . htmlspecialchars($task['time_needed']) . "<a id='headerUpdate' href='updateTask.php?task_id=" . htmlspecialchars(urlencode($task['task_id'])) . "'> <i class='fas fa-edit'></i></a><a id='headerDelete' href='deleteTask.php?task_id=" . htmlspecialchars(urlencode($task['task_id'])) . "'><i class='fas fa-trash'></i></a></p>";
-                    echo "</div>";
+                   
+                    echo "<p class='card-text'>" . htmlspecialchars($task['name']) . "</p>";
+                    echo "<p class='card-text'>" . htmlspecialchars($task['description']) . "</p>";
+                    echo "<p class='card-text'>" . htmlspecialchars($task['status']) . "</p>";
+                    echo "<p class='card-text'>" . htmlspecialchars($task['time_needed']) . "</p>";
+                    echo "<a id='headerUpdate' href='updateTask.php?task_id=" . htmlspecialchars(urlencode($task['task_id'])) . "'> <i class='fas fa-edit'></i></a>";
+                    echo "<a id='headerDelete' href='deleteTask.php?task_id=" . htmlspecialchars(urlencode($task['task_id'])) . "'><i class='fas fa-trash'></i></a>";
                 }
             }
+            echo "</div>";
             echo "</div>";
         }
     ?>

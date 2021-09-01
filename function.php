@@ -8,7 +8,7 @@ require "dbConnect.php";
   
     // set the resulting array to associative
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-  return $stmt->fetchAll();
+    return $stmt->fetchAll();
   }
 
   function getTasks() {
@@ -18,7 +18,7 @@ require "dbConnect.php";
   
     // set the resulting array to associative
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-  return $stmt->fetchAll();
+    return $stmt->fetchAll();
   }
 
   function listCreater($name){
@@ -37,43 +37,46 @@ require "dbConnect.php";
 
   function listUpdater($list_id, $name){
     $conn = DbConnect();
-    $stnt = $conn->prepare("UPDATE lists set list_id = :list_id, name = :name WHERE list_id = :list_id");
-    $stnt->execute([':list_id' => $list_id, ':name' => $name]);
-    return $stnt->errorCode();
+    $stmt = $conn->prepare("UPDATE lists set list_id = :list_id, name = :name WHERE list_id = :list_id");
+    $stmt->execute([':list_id' => $list_id, ':name' => $name]);
+    return $stmt->errorCode();
   }
 
   function taskUpdater($task_id, $name, $description, $list_id){
     $conn = DbConnect();
-    $stnt = $conn->prepare("UPDATE tasks set task_id = :task_id, name = :name, description = :description, status = :status, time_needed = :time_needed, list_id = :list_id WHERE task_id = :task_id");
-    $stnt->execute([':task_id' => $task_id, ':name' => $name, 'description' => $description, ':status' => $status, ':time_needed' => $time_needed, 'list_id' => $list_id]);
-    return $stnt->errorCode();  
+    $stmt = $conn->prepare("UPDATE tasks set task_id = :task_id, name = :name, description = :description, status = :status, time_needed = :time_needed, list_id = :list_id WHERE task_id = :task_id");
+    $stmt->execute([':task_id' => $task_id, ':name' => $name, 'description' => $description, ':status' => $status, ':time_needed' => $time_needed, 'list_id' => $list_id]);
+    return $stmt->errorCode();  
   }  
 
   function listRemover($list_id){  
     $conn = DbConnect();
-    $stnt = $conn->prepare("DELETE FROM lists WHERE list_id = :list_id");
-    $stnt->execute([':list_id'=> $list_id]);
-    return $stnt->errorCode();
+    $stmt = $conn->prepare("DELETE FROM lists WHERE list_id = :list_id");
+    $stmt->execute([':list_id'=> $list_id]);
+
+    $stmt = $conn->prepare("DELETE FROM tasks WHERE list_id = :list_id");
+    $stmt->execute([':list_id' => $list_id]);
+    return $stmt->errorCode();
   }
 
   function taskRemover($task_id){
     $conn = DbConnect();
-    $stnt = $conn->prepare("DELETE FROM tasks WHERE task_id = :task_id");
-    $stnt->execute([':task_id'=> $task_id]);
-    return $stnt->errorCode();
+    $stmt = $conn->prepare("DELETE FROM tasks WHERE task_id = :task_id");
+    $stmt->execute([':task_id'=> $task_id]);
+    return $stmt->errorCode();
   }
 
   function getListId($list_id){
     $conn = DbConnect();
-    $stnt = $conn->prepare("SELECT * FROM lists where list_id = :list_id");
-    $stnt->execute([':list_id'=> $list_id]);
-    return $stnt->fetchAll();
+    $stmt = $conn->prepare("SELECT * FROM lists where list_id = :list_id");
+    $stmt->execute([':list_id'=> $list_id]);
+    return $stmt->fetchAll();
   }
 
   function getTaskId($task_id){
     $conn = DbConnect();
-    $stnt = $conn->prepare("SELECT * FROM tasks where task_id = :task_id");
-    $stnt->execute([':task_id'=> $task_id]);
-    return $stnt->fetchAll();
+    $stmt = $conn->prepare("SELECT * FROM tasks where task_id = :task_id");
+    $stmt->execute([':task_id'=> $task_id]);
+    return $stmt->fetchAll();
   }
 ?>

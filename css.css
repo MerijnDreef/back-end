@@ -9,12 +9,12 @@ a{
 }
 
 h2{
-    margin-top: 10px;
-    width: 30%;
+    /* margin-top: 10px;
+    width: 30%; */
     background-color: #474747       !important;
     color: #f8f8f8                  !important;
-    text-align: center;
-    display: inline-block;
+    /* text-align: center;
+    display: inline-block; */
 }
 
 #headerCreate{
@@ -26,10 +26,10 @@ h2{
     padding: 3px;
 }
 
-p{
+/* p{
     width: 30%;
     display: inline-block;
-}
+} */
 
 #headerUpdate{
     /* background-color:rgb(39, 131, 184); */
