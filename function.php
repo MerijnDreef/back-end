@@ -11,9 +11,31 @@ require "dbConnect.php";
     return $stmt->fetchAll();
   }
 
-  function getTasks() {
+  function getTasks($statusTimeRequest) {
     $connection = DbConnect();
-    $stmt = $connection->prepare("SELECT * FROM tasks");
+    $sql = "SELECT * FROM tasks ";
+    if($statusTimeRequest == null || $statusTimeRequest['status'] == "all" ){
+      if($statusTimeRequest == null) {
+      } else if($statusTimeRequest['time'] == "high") {
+        $sql .= "ORDER BY time_needed DESC";
+      } else if($statusTimeRequest['time'] == "low"){
+        $sql .= "ORDER BY time_needed ASC";
+      }
+    } else {
+      if(isset($statusTimeRequest['status_and_time_shown'])) {
+        $status_chosen = $statusTimeRequest['status'];
+        $sql .= "WHERE status = '{$status_chosen}'";
+      }
+
+      if($statusTimeRequest['time'] == "high") {
+        $sql .= "ORDER BY time_needed DESC";
+      } else if($statusTimeRequest['time'] == "low") {
+        $sql .= "ORDER BY time_needed ASC";
+      } else {
+        
+      }
+    }
+    $stmt = $connection->prepare($sql);
     $stmt->execute();
   
     // set the resulting array to associative
@@ -68,14 +90,14 @@ require "dbConnect.php";
 
   function getListId($list_id){
     $conn = DbConnect();
-    $stmt = $conn->prepare("SELECT * FROM lists where list_id = :list_id");
+    $stmt = $conn->prepare("SELECT * FROM lists WHERE list_id = :list_id");
     $stmt->execute([':list_id'=> $list_id]);
     return $stmt->fetchAll();
   }
 
   function getTaskId($task_id){
     $conn = DbConnect();
-    $stmt = $conn->prepare("SELECT * FROM tasks where task_id = :task_id");
+    $stmt = $conn->prepare("SELECT * FROM tasks WHERE task_id = :task_id");
     $stmt->execute([':task_id'=> $task_id]);
     return $stmt->fetchAll();
   }
