@@ -64,7 +64,7 @@ require "dbConnect.php";
     return $stmt->errorCode();
   }
 
-  function taskUpdater($task_id, $name, $description, $list_id){
+  function taskUpdater($task_id, $name, $description, $status, $time_needed, $list_id){
     $conn = DbConnect();
     $stmt = $conn->prepare("UPDATE tasks set task_id = :task_id, name = :name, description = :description, status = :status, time_needed = :time_needed, list_id = :list_id WHERE task_id = :task_id");
     $stmt->execute([':task_id' => $task_id, ':name' => $name, 'description' => $description, ':status' => $status, ':time_needed' => $time_needed, 'list_id' => $list_id]);

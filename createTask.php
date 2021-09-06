@@ -13,7 +13,7 @@ function createTask($name, $description, $status, $time_needed, $list_id) {
 
 if(array_key_exists('submit', $_POST)) {
     createTask($_POST['name'], $_POST['description'], $_POST['status'], $_POST['time_needed'], $_POST['list_id']);
- }
+}
 
 ?>
 <!DOCTYPE html>
