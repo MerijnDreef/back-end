@@ -1,5 +1,7 @@
 <?php
-include "function.php";
+include "taskController.php";
+include "listController.php";
+
 $result = getLists();
 
 function createTask($name, $description, $status, $time_needed, $list_id) {

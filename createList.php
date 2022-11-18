@@ -1,5 +1,5 @@
 <?php
-include "function.php";
+include "listController.php";
 
 function createList($name) {
     if($name != null) {

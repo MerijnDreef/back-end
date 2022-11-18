@@ -1,5 +1,6 @@
 <?php
-include "function.php";
+include "listController.php";
+
 $show = getListId($_GET['list_id']);
 
 function createList($list_id, $name) {

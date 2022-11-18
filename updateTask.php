@@ -1,5 +1,7 @@
 <?php
-include "function.php";
+include "taskController.php";
+include "listController.php";
+
 $result = getLists();
 $show = getTaskId($_GET['task_id']);
 

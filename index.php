@@ -1,5 +1,7 @@
 <?php
-include "function.php";
+include "taskController.php";
+include "listController.php";
+
 $lists = getLists();
 $tasks = getTasks($_POST);
 
@@ -35,7 +37,7 @@ $tasks = getTasks($_POST);
    <br>
     <?php 
         foreach($lists as $list) {
-            echo "<div class='card bg-dark mb-3 d-inline-block' style='min-width: 20rem; max-width: 20rem; margin-right: 1rem;'>";
+            echo "<div class='card bg-dark mb-3 d-inline-block' style='min-width: 20rem; max-width: 20rem; margin-left: 1rem; vertical-align: top;'>";
            
             echo "<div class='card-header'><h2>" . htmlspecialchars($list['name']) . "</h2></div>";
             echo "<a id='headerUpdate' href='updateList.php?list_id=" . htmlspecialchars(urlencode($list['list_id'])) . "' alt='Edit'> <i class='fas fa-edit'></i></a>";
